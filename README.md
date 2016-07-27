@@ -168,7 +168,10 @@ $ grunt build
 ```
 $ grunt buildcontrol:pages
 ```
-* A **gh-pages** branch will be created for you inside this folder.
+* A **gh-pages** branch will be created for you inside the dist folder.
+* Congrats, you can now visit your deployed Angular template App on
+http://<your-github-page-name>.github.io/<your-project-repo-name>
+* If you wish to deploy this template App to Heroku, there will be a few more steps.
 
 
 
