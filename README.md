@@ -14,3 +14,27 @@ I will use the **$** to represent the mac terminal prompt.
 ```
 $ node -v
 ```
+3. Since [node package manager](https://www.npmjs.com/) (npm) comes with the node install, all you’ll have to do is to do is to make sure that it’s up-to-date:
+```
+$ npm install npm -g
+```
+4. To install Yeoman:
+```
+$ npm install -g yo
+```
+5. To install the Angular generator:
+```
+$ npm install -g generator-angular
+```
+6. Make your project folder and change into said project folder:
+```
+$ mkdir <your-project-name>-app && cd $_
+```
+7. Track your files with Git
+```
+$ git init
+```
+8. Add Github remote
+```
+$ git remote add origin <your-project-repo.git>
+```
