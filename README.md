@@ -11,9 +11,9 @@ I will use the **$** to represent the mac terminal prompt.
 
 1. Install Node.js to your system by downloading [NodeJS](https://nodejs.org/en)
 2. To check if you already have a version of node:
-```
-$ node -v
-```
+  ```
+  $ node -v
+  ```
 3. Since [node package manager](https://www.npmjs.com/) (npm) comes with the node install, all you’ll have to do is to do is to make sure that it’s up-to-date:
 ```
 $ npm install npm -g
@@ -38,3 +38,5 @@ $ git init
 ```
 $ git remote add origin <your-project-repo.git>
 ```
+9. Add, commit, and push to Github
+
