@@ -65,13 +65,13 @@ $ npm install grunt-build-control --save-dev
 ```
 grunt.loadNpmTasks(‘grunt-build-control’);
 ```
-* Next, refer to the **Usage** section on the grunt-build-control Github page and copy the example tasks into your **Gruntfile.js**. Below is my **Gruntfile.js** at this step of the tutorial. Do note that you’ll have to insert this block of tasks and make sure that each task is separated by a comma. This means that the task preceding ```buildcontrol: {…}``` would require a comma.
+* Next, refer to the **Usage** section on the grunt-build-control Github page and copy the example tasks into your **Gruntfile.js**. Below is my **Gruntfile.js** at this step of the tutorial. Do note that you’ll have to insert this block of tasks and make sure that each task is separated by a comma. This means that the task preceding ```buildcontrol: {…}``` would require a comma. I've indicated the two places insert code with ```///\```.
 ```
 'use strict';
 
 module.exports = function (grunt) {
 
-  grunt.loadNpmTasks(‘grunt-build-control’); //<---INSERT HERE
+  grunt.loadNpmTasks(‘grunt-build-control’);      ///\<---INSERT HERE
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -110,7 +110,7 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    },   // Don't forget the comma here
+    },   ///\ Don't forget the comma here, the code below is what I've copied over from grunt buildcontrol
 
     buildcontrol: {
       options: {
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
           branch: 'build'
         }
       }
-    }, // Don't forget the comma here
+    }, ///\ Don't forget the comma here. The grunt buildcontrol pasted code stops here.
 
     // Test settings
     karma: {
