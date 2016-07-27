@@ -10,9 +10,9 @@
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-build-control');
+  var pkg = require('./package.json');
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-  var pkg = require('./package.json');
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',

@@ -159,6 +159,16 @@ module.exports = function (grunt) {
 'git@github.com:Angular-deployment-tutorial.git'
 ```
 * Add, commit, and push your project using Git.
+* To create a distribution folder of your entire project, run:
+```
+$ grunt build
+```
+* You will notice that a dist folder has been created and is listed on your **.ignore** file. This folder will not be pushed to Github.
+* To publish this project to your Github’s gh-pages, run:
+```
+$ grunt buildcontrol:pages
+```
+* A **gh-pages** branch will be created for you inside this folder.
 
 
 
