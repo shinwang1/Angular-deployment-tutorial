@@ -8,11 +8,11 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+
   grunt.loadNpmTasks('grunt-build-control');
-  //grunt.loadNpmTasks('grunt-build-control');
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-
+  var pkg = require('./package.json');
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
@@ -417,7 +417,7 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-    
+
     buildcontrol: {
       options: {
         dir: 'dist',
