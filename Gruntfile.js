@@ -427,7 +427,7 @@ module.exports = function (grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:Angular-deployment-tutorial.git',
+          remote: 'git@github.com:shinwang1/Angular-deployment-tutorial.git',
           branch: 'gh-pages'
         }
       },
