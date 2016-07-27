@@ -64,7 +64,7 @@ $ npm install grunt-build-control --save-dev
 * Paste the following into your **Gruntfile.js**.
 ```
 grunt.loadNpmTasks(‘grunt-build-control’);
-``
+```
 * Next, refer to the **Usage** section on the grunt-build-control Github page and copy the example tasks into your **Gruntfile.js**. Below is my **Gruntfile.js** at this step of the tutorial. Do note that you’ll have to insert this block of tasks and make sure that each task is separated by a comma. This means that the task preceding ```buildcontrol: {…}``` would require a comma.
 ```
 'use strict';
