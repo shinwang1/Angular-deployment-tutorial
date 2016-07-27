@@ -176,8 +176,91 @@ $ grunt buildcontrol:pages
 ```
 * A **gh-pages** branch will be created for you inside the dist folder.
 * Congrats, you can now visit your deployed Angular template App on
-http://<your-github-page-name>.github.io/<your-project-repo-name>
+```http://<your-github-page-name>.github.io/<your-project-repo-name>```
 * If you wish to deploy this template App to Heroku, there will be a few more steps.
+
+## Deployment to Heroku
+* [Install Heroku Toolbelt](https://toolbelt.heroku.com/)
+* Log into Heroku from your project directory
+```
+$ heroku login
+Enter your Heroku credentials.
+Email: you@example.com
+Password (typing will be hidden):
+Authentication successful.
+```
+* Create your Heroku App:
+```
+$ heroku create
+Creating stark-fog-398... done, stack is cedar-14
+http://stark-fog-398.herokuapp.com/ | https://git.heroku.com/stark-fog-398.git
+Git remote heroku added
+```
+* In the example above, the App, ```stark-fog-398``` has been created on heroku. Your App will have a randomly generated name. Take this name and place it into your **Gruntfile.js**. Here is what I have:
+```
+heroku: {
+        options: {
+          remote: 'git@heroku.com:guarded-hamlet-26569.git', ///\INSERT App name
+          branch: 'master',
+          tag: pkg.version
+        }
+      },
+```
+* Change into your dist directory and create the following files:
+```
+$ touch package.json server.js Procfile
+```
+* Copy over your the contents of your **package.json** file in your project root. Change the node versoin to **0.12.0** from **0.10.0**. Leave only the following:
+```
+{
+  "name": "yourprojectapp",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "test": "karma start test/karma.conf.js"
+  }
+}
+```
+* Inside the dist directory, install express:
+```
+$ npm install express --save
+```
+* Your **package.json** will now resemble this:
+```
+{
+  "name": "yourprojectapp",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "test": "karma start test/karma.conf.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
+```
+* Create a simple express server inside the dist directory. Here is what my server.js looks like:
+```
+var express = require('express');
+
+var app = express();
+
+app.use(express.static(__dirname));
+
+var port = process.env.PORT || 3000;
+
+app.listen(port);
+console.log('listening on ' + port);
+```
+* Heroku requires a Procfile to start the express server. Here is what my Procfile looks like:
+```
+web: node server.js
+```
+* Git add and commit changes for dist directory and project root directory.
+* 
+
 
 
 
