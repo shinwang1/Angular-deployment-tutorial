@@ -43,6 +43,120 @@ $ git remote add origin <your-project-repo.git>
 ```
 $ yo angular <your-project-name>-app
 ```
-* If you wish to use Karma and Grunt to run tests then:
-```$ npm install grunt-karma --save-dev```
+* At this point, Yeoman will walk you through a basic setup prior to scaffolding your project. For my setup, I said **no** to Gulp, **no** to Sass/compass, and **yes** to Bootstrap. After that, I used the default Angular modules.
+* If you wish to use [Karma](https://www.npmjs.com/package/grunt-karma) with Grunt to run tests:
+```
+$ npm install grunt-karma --save-dev
+```
+* To see what the scaffolded your-project-app looks like on your localhost, type:
+```
+$ grunt serve
+```
+* At this point, I would recommend that you spend some time looking through the **Gruntfile.js** in the **root of your project folder** to see all of the available tasks that you can type into your command line. For example, ```$ grunt test``` will run tests that you would write under the **test/spec** folder and ```$ grunt``` will minify (one of several tasks) a copied version of your files and place those files into a **dist** (distribution) folder. The advantage of having these automation task commands is that you can continuous build and test your Web App locally and deploy them quickly to check for matching functionality.
+
+## Onto deployment
+
+* Within your project folder:
+```
+$ npm install grunt-build-control --save-dev
+```
+* Then navigate to the [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control) Github page, and use those instructions to complete your **Gruntfile.js**. I will outline what I’ve used here.
+* Paste the following into your **Gruntfile.js**.
+```
+grunt.loadNpmTasks(‘grunt-build-control’);
+``
+* Next, refer to the **Usage** section on the grunt-build-control Github page and copy the example tasks into your **Gruntfile.js**. Below is my **Gruntfile.js** at this step of the tutorial. Do note that you’ll have to insert this block of tasks and make sure that each task is separated by a comma. This means that the task preceding ```buildcontrol: {…}``` would require a comma.
+```
+'use strict';
+
+module.exports = function (grunt) {
+
+  grunt.loadNpmTasks(‘grunt-build-control’); //<---INSERT HERE
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  // Automatically load required Grunt tasks
+  require('jit-grunt')(grunt, {
+    useminPrepare: 'grunt-usemin',
+    ngtemplates: 'grunt-angular-templates',
+    cdnify: 'grunt-google-cdn'
+  });
+
+  // Configurable paths for the application
+  var appConfig = {
+    app: require('./bower.json').appPath || 'app',
+    dist: 'dist'
+  };
+
+  // Define the configuration for all the tasks
+  grunt.initConfig({
+
+    // Project settings
+    yeoman: appConfig,
+
+    ...// I've hidden the code in-between for brevity
+
+    // Run some tasks in parallel to speed up the build process
+    concurrent: {
+      server: [
+        'copy:styles'
+      ],
+      test: [
+        'copy:styles'
+      ],
+      dist: [
+        'copy:styles',
+        'imagemin',
+        'svgmin'
+      ]
+    },   // Don't forget the comma here
+
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:example_user/example_webapp.git',
+          branch: 'gh-pages'
+        }
+      },
+      heroku: {
+        options: {
+          remote: 'git@heroku.com:example-heroku-webapp-1988.git',
+          branch: 'master',
+          tag: pkg.version
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: 'build'
+        }
+      }
+    }, // Don't forget the comma here
+
+    // Test settings
+    karma: {
+      unit: {
+        configFile: 'test/karma.conf.js',
+        singleRun: true
+      }
+    }
+  });
+
+
+  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    ...// I've hidden the code in-between for brevity
+  });
+
+  ...// I've hidden the code in-between for brevity
+};
+
+```
+
 
