@@ -262,7 +262,16 @@ console.log('listening on ' + port);
 web: node server.js
 ```
 * Git add and commit changes for dist directory and project root directory.
-* 
+* Push to Heroku using Grunt from the project root directory
+```
+$ grunt buildcontrol:heroku
+```
+* If all goes well, then congrats! You are now deployed on both gh-pages and Heroku.
+* Here is my final result [yourProjectApp](https://guarded-hamlet-26569.herokuapp.com/#/)
+* From here, as you continue to develop your App, you will have to run ```grunt``` to repackage your dist folder. Note that your **Package.json**, **server.js**, and **Procfile** will be deleted in the process. Be sure to copy their contents to a separate file in the root directory before running ```grunt``` from your project root. You will also have to ```npm install express`` from the dist directory.
+* With anything, there's probably a better way to automate using Grunt. If would like to add anything, feel free to make a pull request.
+
+Thanks!
 
 
 
