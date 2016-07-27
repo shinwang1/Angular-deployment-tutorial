@@ -7,7 +7,7 @@ macOS, Yeoman, AngularJS 1.x, Grunt, Github, Heroku
 
 ## Setup and steps on macOS:
 
-I will use the **$** to represent the mac terminal prompt.
+I will use the **$** to represent the mac terminal prompt and **< >** as placeholder for your project's name.
 
 * Install Node.js to your system by downloading [NodeJS](https://nodejs.org/en)
 * To check if you already have a version of node:
@@ -39,4 +39,10 @@ $ git init
 $ git remote add origin <your-project-repo.git>
 ```
 * Add, commit, and push to Github
+* Inside your project folder:
+```
+$ yo angular <your-project-name>-app
+```
+* If you wish to use Karma and Grunt to run tests then:
+```$ npm install grunt-karma --save-dev```
 
