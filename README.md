@@ -99,12 +99,7 @@ module.exports = function (grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
-      server: [
-        'copy:styles'
-      ],
-      test: [
-        'copy:styles'
-      ],
+      ...// I've hidden the code in-between for brevity
       dist: [
         'copy:styles',
         'imagemin',
@@ -158,5 +153,12 @@ module.exports = function (grunt) {
 };
 
 ```
+* You will notice that the code block that you’ve just added has remote: ```'git@github.com:example_webapp.git’``` as the filler repository. You will need to manually change the ```example_webapp.git``` to your remote repository name on Github. Here is mine:
+```
+'git@github.com:Angular-deployment-tutorial.git'
+```
+* Add, commit, and push your project using Git.
+
+
 
 
