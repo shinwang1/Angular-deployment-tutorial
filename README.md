@@ -209,6 +209,10 @@ heroku: {
         }
       },
 ```
+* If you want to give your Heroku App a name, then type:
+```
+$ heroku create <your-project-app>
+```
 * Change into your dist directory and create the following files:
 ```
 $ touch package.json server.js Procfile
